@@ -255,7 +255,7 @@ class OutputCallgraph(gcc.IpaPass):
             Out.abort("invalid filename: '%s'" % filename)
         out = subprocess.run(["dot", "-T%s" % fmt, "-o", filename],
                              stderr=subprocess.STDOUT, stdout=subprocess.PIPE,
-                             encoding='ascii', input=dot_str)
+                             input=bytes(dot_str, encoding='ascii'))
         if out.returncode != 0:
             Out.abort("failed to call 'dot'. Got:\n %s" % Out.wrap(out.stdout))
 

@@ -41,6 +41,17 @@ Note:
 - If you are compilling a code with a Makefile, you can use `make CC="gcc
   -fplugin ..."`
 
+### Using with docker
+
+To build the image:
+```
+docker build -t callgraph .
+```
+
+To run the gcc-python-plugin with the built image:
+
+```docker run -v "$PWD:/src" --env ARGS='<gcc args>' -it callgraph```
+
 ## Configuring output
 
 The plugin will read user specified settings from a `.gcc-callgraph.yml` file,
